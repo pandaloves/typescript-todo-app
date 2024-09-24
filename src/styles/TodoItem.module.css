@@ -1,0 +1,49 @@
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+}
+
+.editInput {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton {
+  background-color: #418ee1;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.editButton:hover {
+  background-color: #0a55a5;
+}
+
+.deleteButton {
+  background-color: #ff4136;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.deleteButton:hover {
+  background-color: #c41212;
+}
