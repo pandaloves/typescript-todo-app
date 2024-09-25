@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "@/styles/TodoItem.module.css";
+import Button from "../ui/Button";
 
 interface TodoItemProps {
   id: number;
@@ -40,15 +41,15 @@ const TodoItem: React.FC<TodoItemProps> = ({
       )}
 
       <div className={styles.buttons}>
-        <button
+        <Button
           onClick={isEditing ? saveTask : editTask}
           className={styles.editButton}
         >
           {isEditing ? saveButton : editButton}
-        </button>
-        <button onClick={() => onDelete(id)} className={styles.deleteButton}>
+        </Button>
+        <Button onClick={() => onDelete(id)} className={styles.deleteButton}>
           {deleteButton}
-        </button>
+        </Button>
       </div>
     </li>
   );
