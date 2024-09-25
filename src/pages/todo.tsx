@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Layout from "@/components/shared/Layout";
 import TodoItem from "@/components/shared/TodoItem";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
@@ -18,7 +17,7 @@ const TodoPage: React.FC = () => {
   const addTodo = () => {
     if (task.trim()) {
       const newTodo: Todo = { id: Date.now(), task };
-      setTodos([newTodo, ...todos]);
+      setTodos((prevTodos) => [newTodo, ...prevTodos]);
       setTask("");
     }
   };
@@ -32,56 +31,54 @@ const TodoPage: React.FC = () => {
 
   // Delete a task
   const removeTodo = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   // Update a task
   const updateTodo = (id: number, updatedTask: string) => {
-    setTodos(
-      todos.map((todo) =>
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
         todo.id === id ? { ...todo, task: updatedTask } : todo
       )
     );
   };
 
   return (
-    <Layout>
-      <div className={styles.container}>
-        {/* Arrow to return to the home page */}
-        <Link href="/" className={styles.backLink}>
-          &#8592;
-        </Link>
-        <h4 className={styles.title}>{title}</h4>
+    <div className={styles.container}>
+      {/* Arrow to return to the home page */}
+      <Link href="/" className={styles.backLink}>
+        &#8592;
+      </Link>
+      <h4 className={styles.title}>{title}</h4>
 
-        {/* Add a task */}
-        <div className={styles.form}>
-          <input
-            type="text"
-            value={task}
-            className={styles.input}
-            onChange={(e) => setTask(e.target.value)}
-            onKeyPress={submitTask}
-            placeholder={input}
-          />
-          <Button onClick={addTodo} className={styles.addButton}>
-            {addButton}
-          </Button>
-        </div>
-
-        {/* List of todos */}
-        <ul className={styles.todoList}>
-          {todos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              task={todo.task}
-              onDelete={removeTodo}
-              onUpdate={updateTodo}
-            />
-          ))}
-        </ul>
+      {/* Add a task */}
+      <div className={styles.form}>
+        <input
+          type="text"
+          value={task}
+          className={styles.input}
+          onChange={(e) => setTask(e.target.value)}
+          onKeyPress={submitTask}
+          placeholder={input}
+        />
+        <Button onClick={addTodo} className={styles.addButton}>
+          {addButton}
+        </Button>
       </div>
-    </Layout>
+
+      {/* List of todos */}
+      <ul className={styles.todoList}>
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            id={todo.id}
+            task={todo.task}
+            onDelete={removeTodo}
+            onUpdate={updateTodo}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
 
