@@ -44,10 +44,10 @@ const TodoItem: React.FC<TodoItemProps> = ({
           onClick={isEditing ? saveTask : editTask}
           className={styles.editButton}
         >
-          {isEditing ? "Save" : "Edit"}
+          {isEditing ? saveButton : editButton}
         </button>
         <button onClick={() => onDelete(id)} className={styles.deleteButton}>
-          Delete
+          {deleteButton}
         </button>
       </div>
     </li>
@@ -55,3 +55,9 @@ const TodoItem: React.FC<TodoItemProps> = ({
 };
 
 export default TodoItem;
+
+// @const starts
+const editButton = "Redigera";
+const saveButton = "Spara";
+const deleteButton = "Radera";
+// @const ends
