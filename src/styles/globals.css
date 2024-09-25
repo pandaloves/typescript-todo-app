@@ -34,20 +34,8 @@ main {
   padding: 20px;
 }
 
-a {
-  color: #155196;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: #1d74d1;
-}
-
 img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
+  max-width: 400px;
   border-radius: 3px;
 }
 
